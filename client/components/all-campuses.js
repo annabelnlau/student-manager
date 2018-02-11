@@ -1,31 +1,74 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { addNewCampusThunk } from '../store'
 
-function AllCampuses(props){
+function AllCampuses(props) {
     return (
         <div>
-        <h1>All Campuses</h1>
-        <ul>
-        {
-            props.allCampuses && props.allCampuses.map(campus => {
-                return (
-                    <li key={campus.id}>
-                    {campus.name}
-                    </li>
-                )
-            })
-        }
-        </ul>
+            <h1>All Campuses</h1>
+            <ul>
+                {
+                    props.allCampuses && props.allCampuses.map(campus => {
+                        return (
+                            <li key={campus.id}>
+                                {campus.name}
+                                <p>
+                                    <img src={campus.imageUrl} />
+                                </p>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+            <div>
+                <form onSubmit={props.handleSubmit}>
+                    <div>
+                        <label htmlFor="name">
+                            <small>Name</small>
+                        </label>
+                        <input name="name" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="imgUrl">
+                            <small>Image Url</small>
+                        </label>
+                        <input name="imgUrl" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="description">
+                            <small>Description</small>
+                        </label>
+                        <input name="description" type="text" />
+                    </div>
+                    <button type="submit" className="btn-success">
+                        Add a New Campus
+            </button>
+                </form>
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = function(state) {
+const mapStateToProps = function (state) {
     return {
         allCampuses: state.allCampuses,
         currentUser: state.user
     }
 }
 
-export default connect(mapStateToProps, null)(AllCampuses)
+const mapDispatchToProps = function(dispatch){
+    return {
+        handleSubmit(evt){
+            evt.preventDefault()
+            const newCampus = {
+                name: evt.target.name.value,
+                imgUrl: evt.target.imgUrl.value,
+                description: evt.target.description.value
+            }
+            dispatch(addNewCampusThunk(newCampus))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllCampuses)

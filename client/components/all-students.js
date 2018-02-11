@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { fetchAllPromoCodes } from '../store'
+import { fetchAllPromoCodes, addNewStudentThunk } from '../store'
 
 
 function AllStudents(props){
@@ -20,6 +20,41 @@ function AllStudents(props){
             })
         }
         </ul>
+        <form onSubmit={props.handleSubmit}>
+            <div>
+              <label htmlFor="firstName">
+                <small>First Name</small>
+              </label>
+              <input name="firstName" type="text" />
+            </div>
+            <div>
+              <label htmlFor="lastName">
+                <small>Last Name</small>
+              </label>
+              <input name="lastName" type="text" />
+            </div>
+            <div>
+              <label htmlFor="email">
+                <small>Email</small>
+              </label>
+              <input name="email" type="text" />
+            </div>
+            <div>
+              <label htmlFor="gpa">
+                <small>GPA</small>
+              </label>
+              <input name="gpa" type="text" />
+            </div>
+            <div>
+              <label htmlFor="campusId">
+                <small>Campus Id</small>
+              </label>
+              <input name="campusId" type="text" />
+            </div>
+            <button type="submit" className="btn-success">
+              Add a New Student
+            </button>
+          </form>
         </div>
     )
 }
@@ -31,4 +66,20 @@ const mapStateToProps = function(state){
     }
 }
 
-export default connect(mapStateToProps, null)(AllStudents)
+const mapDispatchToProps = function(dispatch){
+    return {
+        handleSubmit(evt){
+            evt.preventDefault()
+            const newStudent = {
+                firstName: evt.target.firstName.value,
+                lastName: evt.target.lastName.value,
+                email: evt.target.email.value,
+                gpa: evt.target.gpa.value,
+                campusId: evt.target.campusId.value
+            }
+            dispatch(addNewStudentThunk(newStudent))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllStudents)

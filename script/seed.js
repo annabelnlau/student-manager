@@ -25,7 +25,7 @@ async function seed () {
   const campuses = await Promise.all([
     Campus.create({name: 'Jupiter', description: 'Jupiter is a very good school'}),
     Campus.create({name: 'Mars', description: 'Mars is a very good school', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF00WERcmZI0ebjmo6e7rS-H4V0p9DOtiGP_kY9mB47GKsC_I7'}),
-    Campus.create({name: 'Neptune', description: 'Neptune is a very good school', imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/275px-Neptune_Full.jpg'}),
+    Campus.create({name: 'Neptune', description: 'Neptune is a very good school', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrA_Dfb13VSM9hurffzPaSte_2aHAHJNMze5Ccc5EC0I4kLMrJ'}),
     Campus.create({name: 'Venus', description: 'Venus is a very good school', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGh_RbQJYADlSiRgaWaNaefZ-TTsR6KKTDTJkADWUVSDRhtSYsQ'})
   ])
   const students = await Promise.all([
