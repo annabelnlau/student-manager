@@ -1,6 +1,5 @@
 import axios from 'axios'
 import history from '../history'
-//import {fetchAllStudents} from './allStudents'
 
 /**
  * ACTION TYPES
@@ -26,9 +25,7 @@ export const me = () =>
   dispatch =>
     axios.get('/auth/me')
       .then(res =>
-        dispatch(getUser(res.data || defaultUser))
-      )
-        
+        dispatch(getUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
 export const auth = (email, password, method) =>
