@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
 import {logout} from '../store'
+import {AllStudents} from '../components'
 
 /**
  * COMPONENT
@@ -15,7 +16,7 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>BOILERMAKER</h1>
+      <h1>GALACTA ACADEMIES</h1>
       <nav>
         {
           isLoggedIn
@@ -23,6 +24,7 @@ const Main = (props) => {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
               <a href="#" onClick={handleClick}>Logout</a>
+              <Link to="/students">All Students</Link>
             </div>
             : <div>
               {/* The navbar will show these links before you log in */}
