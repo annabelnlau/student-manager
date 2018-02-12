@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { fetchAllPromoCodes, addNewStudentThunk } from '../store'
+import { addNewStudentThunk } from '../store'
 
 
 function AllStudents(props){
@@ -14,7 +14,7 @@ function AllStudents(props){
             props.allStudents && props.allStudents.map(student => {
                 return (
                     <li key={student.id}>
-                    {student.name}
+                    <Link to={`/students/${student.id}`}>{student.name}</Link>
                     </li>
                 )
             })
