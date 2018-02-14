@@ -20,7 +20,8 @@ async function seed () {
 
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({email: 'murphy@email.com', password: '123'}),
+    User.create({email: 'annabel@annabel.com', password: '123'})
   ])
   const campuses = await Promise.all([
     Campus.create({name: 'Jupiter', description: 'Jupiter is a very good school'}),
@@ -30,8 +31,10 @@ async function seed () {
   ])
   const students = await Promise.all([
     Student.create({firstName: 'Annabel', lastName: 'Lau', email: 'annabel@annabel.com', gpa: 3.8, campusId: 1}),
-    Student.create({firstName: 'Chikara', lastName: 'Takahashi', email: 'chikara@chikara.com', gpa: 3.9, campusId: 2}),
-    Student.create({firstName: 'Nick', lastName: 'DiRienzo', email: 'nick@nick.com', gpa: 3.9, campusId: 3})
+    Student.create({firstName: 'Chikara', lastName: 'Takahashi', email: 'chikara@chikara.com', gpa: 3.9, campusId: 1}),
+    Student.create({firstName: 'Nick', lastName: 'DiRienzo', email: 'nick@nick.com', gpa: 3.9, campusId: 3}),
+    Student.create({firstName: 'Gladys', lastName: 'Wu', email: 'gladys@gladys.com', gpa: 3.7, campusId: 2}),
+    Student.create({firstName: 'Caleb', lastName: 'Li', email: 'caleb@caleb.com', gpa: 3.7, campusId: 4})
   ])
 
 
