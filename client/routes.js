@@ -11,7 +11,8 @@ import {
   AllStudents, 
   AllCampuses, 
   Homepage,
-  SingleStudent} from './components'
+  SingleStudent,
+  SingleCampus } from './components'
 import {me, fetchAllStudents, fetchAllCampuses} from './store'
 
 /**
@@ -33,9 +34,10 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/campuses" component={AllCampuses} />
+            <Route path="/campuses/:id" component={SingleCampus} />
             <Route exact path="/students" component={AllStudents} />
+            <Route path="/students/:id" component={SingleStudent} />
             <Route path="/home" component={Homepage} />
-            <Route path="/students/:studentId" component={SingleStudent}/>
             {
               isLoggedIn &&
               <Switch>

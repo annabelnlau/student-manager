@@ -12,9 +12,9 @@ function AllCampuses(props) {
                     props.allCampuses && props.allCampuses.map(campus => {
                         return (
                             <li key={campus.id}>
-                                {campus.name}
+                                <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
                                 <p>
-                                    <img src={campus.imageUrl} />
+                                <Link to={`/campuses/${campus.id}`}><img src={campus.imageUrl} /></Link>
                                 </p>
                             </li>
                         )
