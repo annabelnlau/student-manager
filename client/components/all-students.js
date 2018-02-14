@@ -5,7 +5,6 @@ import { addNewStudentThunk } from '../store'
 
 
 function AllStudents(props){
-    console.log("PROPS:", props)
     return (
         <div>
         <h1>All Students</h1>

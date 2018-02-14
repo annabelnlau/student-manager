@@ -15,7 +15,7 @@ function SingleCampus(props) {
             <Link to="/campuses"><button>Back to Campuses</button></Link>
         </div>
     )
-}   
+}
 
 const mapStateToProps = function (state, ownProps) {
     return {
