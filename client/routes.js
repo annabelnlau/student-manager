@@ -1,30 +1,32 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Route, Switch, Router} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Route, Switch, Router } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
 import {
-  Main, 
-  Login, 
-  Signup, 
-  UserHome, 
-  AllStudents, 
-  AllCampuses, 
+  Main,
+  Login,
+  Signup,
+  UserHome,
+  AllStudents,
+  AllCampuses,
   Homepage,
   SingleStudent,
-  SingleCampus } from './components'
-import {me, fetchAllStudents, fetchAllCampuses} from './store'
+  SingleCampus,
+  EditStudent
+} from './components'
+import { me, fetchAllStudents, fetchAllCampuses } from './store'
 
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.loadInitialData()
   }
 
-  render () {
-    const {isLoggedIn} = this.props
+  render() {
+    const { isLoggedIn } = this.props
 
     return (
       <Router history={history}>
@@ -37,14 +39,16 @@ class Routes extends Component {
             <Route exact path="/campuses" component={AllCampuses} />
             <Route path="/campuses/:id" component={SingleCampus} />
             <Route exact path="/students" component={AllStudents} />
+            <Route path="/students/:id/edit" component={EditStudent} />
+            {/* NOTE: switched ^ v these routes in order to get EditStudent to render*/}
             <Route path="/students/:id" component={SingleStudent} />
             <Route path="/home" component={Homepage} />
             {
               isLoggedIn &&
               <Switch>
-              {/* Routes placed here are only available after logging in */}
-              <Route path="/home" component={Homepage} />
-                </Switch>
+                {/* Routes placed here are only available after logging in */}
+                <Route path="/home" component={Homepage} />
+              </Switch>
             }
             {/* Displays our Homepage component as a fallback */}
             <Route component={Homepage} />
@@ -68,7 +72,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadInitialData () {
+    loadInitialData() {
       dispatch(me())
       dispatch(fetchAllStudents())
       dispatch(fetchAllCampuses())

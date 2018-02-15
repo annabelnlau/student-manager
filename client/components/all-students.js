@@ -24,6 +24,7 @@ class AllStudents extends Component {
                 })
             }
             </ul>
+            <h1>Add a New Student</h1>
             <form onSubmit={this.props.handleSubmit}>
                 <div>
                   <label htmlFor="firstName">
@@ -56,7 +57,7 @@ class AllStudents extends Component {
                   <input name="campusId" type="text" />
                 </div>
                 <button type="submit" className="btn-success">
-                  Add a New Student
+                  Submit
                 </button>
               </form>
             </div>

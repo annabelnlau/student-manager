@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {deleteStudentThunk, fetchAllStudents} from '../store'
+import {deleteStudentThunk} from '../store'
 
 function SingleStudent(props) {
 
@@ -17,6 +17,7 @@ function SingleStudent(props) {
             <h4>Campus: {student.campusId}</h4>
             <Link to="/students"><button>Back to Students</button></Link>
             <button onClick={props.handleDelete}>Delete Student</button>
+            <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
         </div>
     )
 }
@@ -32,10 +33,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         evt.preventDefault()
         const studentId = +ownProps.match.params.id
         dispatch(deleteStudentThunk(studentId))
-       
-        dispatch(fetchAllStudents())
 
-        //ownProps.history.push('/students')
     }
 })
 
