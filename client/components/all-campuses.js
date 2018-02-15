@@ -1,53 +1,58 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { addNewCampusThunk } from '../store'
+import { addNewCampusThunk, fetchAllCampuses } from '../store'
 
-function AllCampuses(props) {
-    return (
-        <div>
-            <h1>All Campuses</h1>
-            <ul>
-                {
-                    props.allCampuses && props.allCampuses.map(campus => {
-                        return (
-                            <li key={campus.id}>
-                                <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
-                                <p>
-                                <Link to={`/campuses/${campus.id}`}><img src={campus.imageUrl} /></Link>
-                                </p>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+class AllCampuses extends Component {
+    componentDidMount(){
+        this.props.handleFetchAllCampuses()
+    }
+    render(){
+        return (
             <div>
-                <form onSubmit={props.handleSubmit}>
-                    <div>
-                        <label htmlFor="name">
-                            <small>Name</small>
-                        </label>
-                        <input name="name" type="text" />
-                    </div>
-                    <div>
-                        <label htmlFor="imgUrl">
-                            <small>Image Url</small>
-                        </label>
-                        <input name="imgUrl" type="text" />
-                    </div>
-                    <div>
-                        <label htmlFor="description">
-                            <small>Description</small>
-                        </label>
-                        <input name="description" type="text" />
-                    </div>
-                    <button type="submit" className="btn-success">
-                        Add a New Campus
-            </button>
-                </form>
+                <h1>All Campuses</h1>
+                <ul>
+                    {
+                        this.props.allCampuses && this.props.allCampuses.map(campus => {
+                            return (
+                                <li key={campus.id}>
+                                    <Link to={`/campuses/${campus.id}`}>{campus.name}</Link>
+                                    <p>
+                                    <Link to={`/campuses/${campus.id}`}><img src={campus.imageUrl} /></Link>
+                                    </p>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                <div>
+                    <form onSubmit={this.props.handleSubmit}>
+                        <div>
+                            <label htmlFor="name">
+                                <small>Name</small>
+                            </label>
+                            <input name="name" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="imgUrl">
+                                <small>Image Url</small>
+                            </label>
+                            <input name="imgUrl" type="text" />
+                        </div>
+                        <div>
+                            <label htmlFor="description">
+                                <small>Description</small>
+                            </label>
+                            <input name="description" type="text" />
+                        </div>
+                        <button type="submit" className="btn-success">
+                            Add a New Campus
+                </button>
+                    </form>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 const mapStateToProps = function (state) {
@@ -59,6 +64,9 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function(dispatch){
     return {
+        handleFetchAllCampuses(){
+            dispatch(fetchAllCampuses())
+        },
         handleSubmit(evt){
             evt.preventDefault()
             const newCampus = {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { deleteCampusThunk } from '../store'
 
 function SingleCampus(props) {
     const campus = props.singleCampus
@@ -13,6 +14,7 @@ function SingleCampus(props) {
             <h4>Campus Id: {campus.id} </h4>
             <h4>{campus.description} </h4>
             <Link to="/campuses"><button>Back to Campuses</button></Link>
+            <button onClick={props.handleDelete}>Delete Campus</button>
         </div>
     )
 }
@@ -23,4 +25,14 @@ const mapStateToProps = function (state, ownProps) {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(SingleCampus))
+const mapDispatchToProps = function (dispatch, ownProps) {
+    return {
+        handleDelete(evt) {
+            evt.preventDefault()
+            const campusId = +ownProps.match.params.id
+            dispatch(deleteCampusThunk(campusId))
+        }
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleCampus))
