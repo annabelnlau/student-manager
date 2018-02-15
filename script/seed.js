@@ -34,7 +34,10 @@ async function seed () {
     Student.create({firstName: 'Chikara', lastName: 'Takahashi', email: 'chikara@chikara.com', gpa: 3.9, campusId: 1}),
     Student.create({firstName: 'Nick', lastName: 'DiRienzo', email: 'nick@nick.com', gpa: 3.9, campusId: 3}),
     Student.create({firstName: 'Gladys', lastName: 'Wu', email: 'gladys@gladys.com', gpa: 3.7, campusId: 2}),
-    Student.create({firstName: 'Caleb', lastName: 'Li', email: 'caleb@caleb.com', gpa: 3.7, campusId: 4})
+    Student.create({firstName: 'Caleb', lastName: 'Li', email: 'caleb@caleb.com', gpa: 3.7, campusId: 4}),
+    Student.create({firstName: 'Minh', lastName: 'Lai', email: 'minh@minh.com', gpa: 3.6, campusId: 4}),
+    Student.create({firstName: 'Thanh', lastName: 'Lai', email: 'thanh@thanh.com', gpa: 3.6, campusId: 2}),
+    Student.create({firstName: 'Kevin', lastName: 'Kim', email: 'kevin@kevin.com', gpa: 3.6, campusId: 3})
   ])
 
 
