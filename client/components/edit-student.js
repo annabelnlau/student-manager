@@ -50,13 +50,18 @@ function EditStudent(props) {
                             defaultValue={studentToEdit.gpa} />
                     </div>
                     <div>
-                        <label htmlFor="campusId">
-                            <small>Campus Id</small>
+                    <label htmlFor="campus">
+                            <small>Campus*</small>
                         </label>
-                        <input
-                            name="campusId"
-                            type="text"
-                            defaultValue={studentToEdit.campusId} />
+                        <select name="campusId">
+                            {props.allCampuses.map(campus => {
+                                return (
+                                    <option key={campus.id} value={campus.id}>
+                                        {campus.name}
+                                    </option>
+                                )
+                            })}
+                        </select>
                     </div>
                     <button type="submit" className="btn-success">
                         Submit Changes
@@ -70,18 +75,15 @@ function EditStudent(props) {
     )
 }
 
-const mapStateToProps = function ({ allStudents }, ownProps) {
+const mapStateToProps = function ({ allStudents, allCampuses }, ownProps) {
     return {
-        singleStudent: allStudents.find(student => +student.id === +ownProps.match.params.id)
+        singleStudent: allStudents.find(student => +student.id === +ownProps.match.params.id),
+        allCampuses
     }
 }
 
 const mapDispatchToProps = function (dispatch, ownProps) {
-    
     return {
-        handleChange(evt){
-
-        },
         handleEditSubmit(evt) {
             evt.preventDefault()
             const studentId = +ownProps.match.params.id

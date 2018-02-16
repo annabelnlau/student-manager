@@ -51,9 +51,8 @@ class AllStudents extends Component {
                         <input name="gpa" type="text" />
                     </div>
 
-
                     <div>
-                    <label htmlFor="gpa">
+                    <label htmlFor="campus">
                             <small>Campus*</small>
                         </label>
                         <select name="campusId">
@@ -66,8 +65,6 @@ class AllStudents extends Component {
                             })}
                         </select>
                     </div>
-
-
 
                     <button type="submit" className="btn-success">
                         Submit
