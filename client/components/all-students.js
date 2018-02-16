@@ -1,64 +1,78 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { addNewStudentThunk, fetchAllStudents } from '../store'
 
 
 class AllStudents extends Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.handleFetchAllStudents()
     }
-    render(){
+    render() {
         return (
             <div>
-            <h1>All Students</h1>
-            <ul>
-            {
-                this.props.allStudents && this.props.allStudents.map(student => {
-                    return (
-                        <li key={student.id}>
-                        <Link to={`/students/${student.id}`}>{student.name}</Link>
-                        </li>
-                    )
-                })
-            }
-            </ul>
-            <h1>Add a New Student</h1>
-            <form onSubmit={this.props.handleSubmit}>
-                <div>
-                  <label htmlFor="firstName">
-                    <small>First Name</small>
-                  </label>
-                  <input name="firstName" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="lastName">
-                    <small>Last Name</small>
-                  </label>
-                  <input name="lastName" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="email">
-                    <small>Email</small>
-                  </label>
-                  <input name="email" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="gpa">
-                    <small>GPA</small>
-                  </label>
-                  <input name="gpa" type="text" />
-                </div>
-                <div>
-                  <label htmlFor="campusId">
-                    <small>Campus Id</small>
-                  </label>
-                  <input name="campusId" type="text" />
-                </div>
-                <button type="submit" className="btn-success">
-                  Submit
+                <h1>All Students</h1>
+                <ul>
+                    {
+                        this.props.allStudents && this.props.allStudents.map(student => {
+                            return (
+                                <li key={student.id}>
+                                    <Link to={`/students/${student.id}`}>{student.name}</Link>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+                <h1>Add a New Student</h1>
+                <p> *Required </p>
+                <form onSubmit={this.props.handleSubmit}>
+                    <div>
+                        <label htmlFor="firstName">
+                            <small>First Name*</small>
+                        </label>
+                        <input name="firstName" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="lastName">
+                            <small>Last Name*</small>
+                        </label>
+                        <input name="lastName" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">
+                            <small>Email*</small>
+                        </label>
+                        <input name="email" type="text" />
+                    </div>
+                    <div>
+                        <label htmlFor="gpa">
+                            <small>GPA*</small>
+                        </label>
+                        <input name="gpa" type="text" />
+                    </div>
+
+
+                    <div>
+                    <label htmlFor="gpa">
+                            <small>Campus*</small>
+                        </label>
+                        <select name="campusId">
+                            {this.props.allCampuses.map(campus => {
+                                return (
+                                    <option key={campus.id} value={campus.id}>
+                                        {campus.name}
+                                    </option>
+                                )
+                            })}
+                        </select>
+                    </div>
+
+
+
+                    <button type="submit" className="btn-success">
+                        Submit
                 </button>
-              </form>
+                </form>
             </div>
         )
 
@@ -66,19 +80,20 @@ class AllStudents extends Component {
     }
 }
 
-const mapStateToProps = function(state){
+const mapStateToProps = function (state) {
     return {
         allStudents: state.allStudents,
-        currentUser: state.user
+        currentUser: state.user,
+        allCampuses: state.allCampuses
     }
 }
 
-const mapDispatchToProps = function(dispatch){
+const mapDispatchToProps = function (dispatch) {
     return {
-        handleFetchAllStudents(){
+        handleFetchAllStudents() {
             dispatch(fetchAllStudents())
         },
-        handleSubmit(evt){
+        handleSubmit(evt) {
             evt.preventDefault()
             const newStudent = {
                 firstName: evt.target.firstName.value,

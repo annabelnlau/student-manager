@@ -27,10 +27,11 @@ class AllCampuses extends Component {
                 </ul>
                 <div>
                 <h1>Add a New Campus</h1>
+                <p>*Required</p>
                     <form onSubmit={this.props.handleSubmit}>
                         <div>
                             <label htmlFor="name">
-                                <small>Name</small>
+                                <small>Name*</small>
                             </label>
                             <input name="name" type="text" />
                         </div>
