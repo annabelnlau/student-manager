@@ -5,7 +5,6 @@ import { addNewStudentThunk, fetchAllStudents } from '../store'
 
 
 class AllStudents extends Component {
-    
     componentDidMount(){
         this.props.handleFetchAllStudents()
     }

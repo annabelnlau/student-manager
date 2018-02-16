@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { addNewCampusThunk, fetchAllCampuses } from '../store'
 
 class AllCampuses extends Component {

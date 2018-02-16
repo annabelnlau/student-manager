@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editStudentThunk } from '../store'
+import { Link } from 'react-router-dom'
 
 
 function EditStudent(props) {
@@ -19,7 +20,8 @@ function EditStudent(props) {
                         <input
                             name="firstName"
                             type="text"
-                            placeholder={studentToEdit.firstName} />
+                            onChange={props.handleChange}
+                            defaultValue={studentToEdit.firstName} />
                     </div>
                     <div>
                         <label htmlFor="lastName">
@@ -28,7 +30,7 @@ function EditStudent(props) {
                         <input
                             name="lastName"
                             type="text"
-                            placeholder={studentToEdit.lastName} />
+                            defaultValue={studentToEdit.lastName} />
                     </div>
                     <div>
                         <label htmlFor="email">
@@ -37,7 +39,7 @@ function EditStudent(props) {
                         <input
                             name="email"
                             type="text"
-                            placeholder={studentToEdit.email} />
+                            defaultValue={studentToEdit.email} />
                     </div>
                     <div>
                         <label htmlFor="gpa">
@@ -46,7 +48,7 @@ function EditStudent(props) {
                         <input
                             name="gpa"
                             type="text"
-                            placeholder={studentToEdit.gpa} />
+                            defaultValue={studentToEdit.gpa} />
                     </div>
                     <div>
                         <label htmlFor="campusId">
@@ -55,11 +57,14 @@ function EditStudent(props) {
                         <input
                             name="campusId"
                             type="text"
-                            placeholder={studentToEdit.campusId} />
+                            defaultValue={studentToEdit.campusId} />
                     </div>
                     <button type="submit" className="btn-success">
                         Submit Changes
             </button>
+                    <p>
+                        <Link to={`/students/${studentToEdit.id}`}><button>Back to Student</button></Link>
+                    </p>
                 </form>
             </div>
         </div>
@@ -73,7 +78,11 @@ const mapStateToProps = function ({ allStudents }, ownProps) {
 }
 
 const mapDispatchToProps = function (dispatch, ownProps) {
+    
     return {
+        handleChange(evt){
+
+        },
         handleEditSubmit(evt) {
             evt.preventDefault()
             const studentId = +ownProps.match.params.id

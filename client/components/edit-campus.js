@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editCampusThunk } from '../store'
+import { Link } from 'react-router-dom'
 
 function EditCampus(props) {
     const campusToEdit = props.singleCampus
@@ -19,7 +20,7 @@ function EditCampus(props) {
                         <input
                             name="name"
                             type="text"
-                            placeholder={campusToEdit.name} />
+                            defaultValue={campusToEdit.name} />
                     </div>
                     <div>
                         <label htmlFor="imageUrl">
@@ -28,7 +29,7 @@ function EditCampus(props) {
                         <input
                             name="imageUrl"
                             type="text"
-                            placeholder={campusToEdit.imageUrl} />
+                            defaultValue={campusToEdit.imageUrl} />
                     </div>
                     <div>
                         <label htmlFor="description">
@@ -37,12 +38,13 @@ function EditCampus(props) {
                         <input
                             name="description"
                             type="text"
-                            placeholder={campusToEdit.description} />
+                            defaultValue={campusToEdit.description} />
                     </div>
                     <button type="submit" className="btn-success">
                         Submit Changes
             </button>
                 </form>
+                <Link to={`/campuses/${campusToEdit.id}`}><button>Back to Campus</button></Link>
             </div>
         </div>
     )
