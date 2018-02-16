@@ -10,7 +10,6 @@ function EditStudent(props) {
     return (
         <div>
             <h1>Edit Student: {studentToEdit.name}</h1>
-            <p>Please complete every field.</p>
             <div>
                 <form onSubmit={props.handleEditSubmit}>
                     <div>
