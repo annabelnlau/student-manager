@@ -9,10 +9,10 @@ function SingleCampus(props) {
 
     return (
         <div>
+        <h1>Campus: {campus.name} </h1>
             <img src={campus.imageUrl} />
-            <h4>Campus: {campus.name} </h4>
             <h4>Campus Id: {campus.id} </h4>
-            <h4>{campus.description} </h4>
+            <p>{campus.description} </p>
             <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
             <button onClick={props.handleDelete}>Delete Campus</button>
             <p>

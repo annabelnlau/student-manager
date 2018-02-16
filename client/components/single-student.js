@@ -6,7 +6,6 @@ import { deleteStudentThunk } from '../store'
 function SingleStudent(props) {
 
     const student = props.singleStudent
-    console.log(props.campusName, "heeyyyy")
 
     if (!student) return <div />
     return (
