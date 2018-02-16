@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {editStudentThunk} from '../store'
+import React from 'react'
+import { connect } from 'react-redux'
+import { editStudentThunk } from '../store'
 
 
 function EditStudent(props) {
@@ -9,57 +8,73 @@ function EditStudent(props) {
     if (!studentToEdit) return <div />
     return (
         <div>
-            <h1>Edit {studentToEdit.name}'s Profile</h1>
+            <h1>Edit Student: {studentToEdit.name}</h1>
+            <p>Please complete every field.</p>
             <div>
-            <form onSubmit={props.handleEditSubmit}>
-            <div>
-              <label htmlFor="firstName">
-                <small>First Name</small>
-              </label>
-              <input name="firstName" type="text" />
-            </div>
-            <div>
-              <label htmlFor="lastName">
-                <small>Last Name</small>
-              </label>
-              <input name="lastName" type="text" />
-            </div>
-            <div>
-              <label htmlFor="email">
-                <small>Email</small>
-              </label>
-              <input name="email" type="text" />
-            </div>
-            <div>
-              <label htmlFor="gpa">
-                <small>GPA</small>
-              </label>
-              <input name="gpa" type="text" />
-            </div>
-            <div>
-              <label htmlFor="campusId">
-                <small>Campus Id</small>
-              </label>
-              <input name="campusId" type="text" />
-            </div>
-            <button type="submit" className="btn-success">
-              Submit Changes
+                <form onSubmit={props.handleEditSubmit}>
+                    <div>
+                        <label htmlFor="firstName">
+                            <small>First Name</small>
+                        </label>
+                        <input
+                            name="firstName"
+                            type="text"
+                            placeholder={studentToEdit.firstName} />
+                    </div>
+                    <div>
+                        <label htmlFor="lastName">
+                            <small>Last Name</small>
+                        </label>
+                        <input
+                            name="lastName"
+                            type="text"
+                            placeholder={studentToEdit.lastName} />
+                    </div>
+                    <div>
+                        <label htmlFor="email">
+                            <small>Email</small>
+                        </label>
+                        <input
+                            name="email"
+                            type="text"
+                            placeholder={studentToEdit.email} />
+                    </div>
+                    <div>
+                        <label htmlFor="gpa">
+                            <small>GPA</small>
+                        </label>
+                        <input
+                            name="gpa"
+                            type="text"
+                            placeholder={studentToEdit.gpa} />
+                    </div>
+                    <div>
+                        <label htmlFor="campusId">
+                            <small>Campus Id</small>
+                        </label>
+                        <input
+                            name="campusId"
+                            type="text"
+                            placeholder={studentToEdit.campusId} />
+                    </div>
+                    <button type="submit" className="btn-success">
+                        Submit Changes
             </button>
-          </form>
-          </div>
+                </form>
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = function({allStudents}, ownProps){
+const mapStateToProps = function ({ allStudents }, ownProps) {
     return {
         singleStudent: allStudents.find(student => +student.id === +ownProps.match.params.id)
     }
 }
 
-const mapDispatchToProps = function(dispatch, ownProps){
+const mapDispatchToProps = function (dispatch, ownProps) {
     return {
-        handleEditSubmit(evt){
+        handleEditSubmit(evt) {
             evt.preventDefault()
             const studentId = +ownProps.match.params.id
             const editedStudent = {
@@ -74,4 +89,4 @@ const mapDispatchToProps = function(dispatch, ownProps){
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditStudent))
+export default connect(mapStateToProps, mapDispatchToProps)(EditStudent)

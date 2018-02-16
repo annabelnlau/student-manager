@@ -15,6 +15,7 @@ function SingleCampus(props) {
             <h4>{campus.description} </h4>
             <Link to="/campuses"><button>Back to Campuses</button></Link>
             <button onClick={props.handleDelete}>Delete Campus</button>
+            <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
         </div>
     )
 }

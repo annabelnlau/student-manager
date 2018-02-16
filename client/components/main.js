@@ -1,9 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
-import {AllStudents, AllCampuses, Homepage, SingleStudent, SingleCampus} from '../components'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { logout } from '../store'
+import {
+  AllStudents,
+  AllCampuses,
+  Homepage,
+  SingleStudent,
+  SingleCampus,
+  EditStudent,
+  EditCampus
+} from '../components'
 
 /**
  * COMPONENT
@@ -12,7 +20,7 @@ import {AllStudents, AllCampuses, Homepage, SingleStudent, SingleCampus} from '.
  *  rendered out by the component's `children`.
  */
 const Main = (props) => {
-  const {children, handleClick, isLoggedIn} = props
+  const { children, handleClick, isLoggedIn } = props
 
   return (
     <div>
@@ -32,7 +40,6 @@ const Main = (props) => {
               <Link to="/home">Home</Link>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-              <Link to="/campuses">Our Campuses</Link>
             </div>
         }
       </nav>
@@ -53,7 +60,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleClick () {
+    handleClick() {
       dispatch(logout())
     }
   }

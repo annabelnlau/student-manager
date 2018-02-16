@@ -13,7 +13,8 @@ import {
   Homepage,
   SingleStudent,
   SingleCampus,
-  EditStudent
+  EditStudent,
+  EditCampus
 } from './components'
 import { me, fetchAllStudents, fetchAllCampuses } from './store'
 
@@ -36,18 +37,18 @@ class Routes extends Component {
             <Route path="/home" component={Homepage} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route exact path="/campuses" component={AllCampuses} />
-            <Route path="/campuses/:id" component={SingleCampus} />
-            <Route exact path="/students" component={AllStudents} />
-            <Route path="/students/:id/edit" component={EditStudent} />
-            {/* NOTE: switched ^ v these routes in order to get EditStudent to render*/}
-            <Route path="/students/:id" component={SingleStudent} />
-            <Route path="/home" component={Homepage} />
             {
               isLoggedIn &&
               <Switch>
-                {/* Routes placed here are only available after logging in */}
-                <Route path="/home" component={Homepage} />
+              {/* Routes placed here are only available after logging in */}
+              <Route path="/home" component={Homepage} />
+              <Route exact path="/campuses" component={AllCampuses} />
+              <Route path="/campuses/:id/edit" component={EditCampus} />
+              <Route path="/campuses/:id" component={SingleCampus} />
+              <Route exact path="/students" component={AllStudents} />
+              <Route path="/students/:id/edit" component={EditStudent} />
+              {/* NOTE: switched ^ v these routes in order to get EditStudent to render*/}
+              <Route path="/students/:id" component={SingleStudent} />
               </Switch>
             }
             {/* Displays our Homepage component as a fallback */}
