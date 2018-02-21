@@ -14,7 +14,7 @@ function SingleStudent(props) {
             <h4>Student Id: {student.id} </h4>
             <h4>Email: {student.email} </h4>
             <h4>GPA: {student.gpa}</h4>
-            <h4>Campus: {student.campusId}</h4>
+            <h4>Campus: {student.campus.name}</h4>
             <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
             <button onClick={props.handleDelete}>Delete Student</button>
             <p>
