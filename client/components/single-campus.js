@@ -37,8 +37,13 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     return {
         handleDelete(evt) {
             evt.preventDefault()
-            const campusId = +ownProps.match.params.id
-            dispatch(deleteCampusThunk(campusId))
+            let confirmDelete = confirm('Are you sure you want to delete this campus?')
+            if (confirmDelete){
+                const campusId = +ownProps.match.params.id
+                dispatch(deleteCampusThunk(campusId))
+            } else {
+                console.log('Delete Cancelled')
+            }
         }
     }
 }
