@@ -18,7 +18,7 @@ function SingleStudent(props) {
             <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
             <button onClick={props.handleDelete}>Delete Student</button>
             <p>
-            <Link to={`/campuses/${student.campus.id}`}><button>Back to {student.campus.name}</button></Link>
+                <Link to={`/campuses/${student.campus.id}`}><button>Back to {student.campus.name}</button></Link>
                 <Link to="/students"><button>Back to Students</button></Link>
                 <Link to="/campuses"><button>Back to Campuses</button></Link>
             </p>
@@ -36,9 +36,13 @@ const mapStateToProps = ({ allStudents, allCampuses }, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleDelete(evt) {
         evt.preventDefault()
-        const studentId = +ownProps.match.params.id
-        dispatch(deleteStudentThunk(studentId))
-
+        let confirmDelete = confirm('Are you sure you want to delete this student?')
+        if (confirmDelete) {
+            const studentId = +ownProps.match.params.id
+            dispatch(deleteStudentThunk(studentId))
+        } else {
+            console.log('Deleted Cancelled')
+        }
     }
 })
 
