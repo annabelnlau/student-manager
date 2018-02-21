@@ -18,7 +18,9 @@ function SingleStudent(props) {
             <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
             <button onClick={props.handleDelete}>Delete Student</button>
             <p>
+            <Link to={`/campuses/${student.campus.id}`}><button>Back to {student.campus.name}</button></Link>
                 <Link to="/students"><button>Back to Students</button></Link>
+                <Link to="/campuses"><button>Back to Campuses</button></Link>
             </p>
         </div>
     )

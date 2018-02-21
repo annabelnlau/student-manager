@@ -9,10 +9,15 @@ function SingleCampus(props) {
 
     return (
         <div>
-        <h1>Campus: {campus.name} </h1>
+            <h1>Campus: {campus.name} </h1>
             <img src={campus.imageUrl} />
             <h4>Campus Id: {campus.id} </h4>
             <p>{campus.description} </p>
+            <h1>Student List</h1>
+                <ul>{
+                    campus.students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.name}</Link></li>)
+                }
+                </ul>
             <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
             <button onClick={props.handleDelete}>Delete Campus</button>
             <p>

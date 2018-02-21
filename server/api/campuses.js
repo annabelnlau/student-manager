@@ -1,9 +1,11 @@
 const router = require('express').Router()
-const { Campus } = require('../db/models')
+const { Campus, Student } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
-    Campus.findAll()
+    Campus.findAll({
+        include: [{model: Student}]
+    })
         .then(campuses => res.json(campuses))
         .catch(next)
 })
