@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editCampusThunk } from '../store'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 function EditCampus(props) {
     const campusToEdit = props.singleCampus
@@ -38,6 +38,7 @@ function EditCampus(props) {
                         <input
                             name="description"
                             type="text"
+                            size="50"
                             defaultValue={campusToEdit.description} />
                     </div>
                     <button type="submit" className="btn-success">
@@ -72,4 +73,5 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCampus)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditCampus))
+

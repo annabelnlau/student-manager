@@ -48,7 +48,11 @@ class AllCampuses extends Component {
                                 <label htmlFor="description">
                                     <small>Description</small>
                                 </label>
-                                <input name="description" type="text" />
+                                <input
+                                name="description"
+                                type="text"
+                                size="50"
+                                />
                             </div>
                             <button type="submit" className="btn-success">
                                 Submit

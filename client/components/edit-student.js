@@ -38,6 +38,7 @@ function EditStudent(props) {
                         <input
                             name="email"
                             type="text"
+                            size="30"
                             defaultValue={studentToEdit.email} />
                     </div>
                     <div>
@@ -47,10 +48,11 @@ function EditStudent(props) {
                         <input
                             name="gpa"
                             type="text"
+                            size="5"
                             defaultValue={studentToEdit.gpa} />
                     </div>
                     <div>
-                    <label htmlFor="campus">
+                        <label htmlFor="campus">
                             <small>Campus*</small>
                         </label>
                         <select name="campusId">
