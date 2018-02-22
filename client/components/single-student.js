@@ -14,20 +14,22 @@ class SingleStudent extends Component {
         if (!studentsCampus) return <div />
 
         return (
-            <div>
-                <h4>Name: {student.name} </h4>
-                <h4>Student Id: {student.id} </h4>
-                <h4>Email: {student.email} </h4>
-                <h4>GPA: {student.gpa}</h4>
-                <h4>Campus ID: {student.campusId}</h4>
-                <h4>Campus Name: {studentsCampus.name}</h4>
-                <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
-                <button className="btn btn-outline-danger" onClick={this.props.handleDelete}>Delete Student</button>
-                <p>
-                    {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
-                    <Link to="/students"><button>Back to Students</button></Link>
-                    <Link to="/campuses"><button>Back to Campuses</button></Link>
-                </p>
+            <div className="jumbotron jumbotron-fluid">
+                <div className="container">
+                    <h1>{student.name} </h1>
+                    <h4>Student Id: {student.id} </h4>
+                    <h4>Email: {student.email} </h4>
+                    <h4>GPA: {student.gpa}</h4>
+                    <h4>Campus ID: {student.campusId}</h4>
+                    <h4>Campus Name: {studentsCampus.name}</h4>
+                    <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
+                    <br />
+                        <button className="btn btn-outline-danger" onClick={this.props.handleDelete}>Delete Student</button>
+                        {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
+                        <p> <Link to="/students"><button>Back to Students</button></Link>
+                            <Link to="/campuses"><button>Back to Campuses</button></Link>
+                    </p>
+                </div>
             </div>
         )
     }

@@ -10,7 +10,8 @@ class AllStudents extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="jumbotron jumbotron-fluid">
+            <div className="container">
                 <h1>All Students</h1>
                 <ul>
                     {
@@ -70,6 +71,7 @@ class AllStudents extends Component {
                         Submit
                 </button>
                 </form>
+            </div>
             </div>
         )
 

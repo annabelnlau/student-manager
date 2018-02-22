@@ -8,21 +8,24 @@ function SingleCampus(props) {
     if (!campus) return <div />
 
     return (
-        <div>
-            <h1>Campus: {campus.name} </h1>
-            <img src={campus.imageUrl} />
-            <h4>Campus Id: {campus.id} </h4>
-            <p>{campus.description} </p>
-            <h1>Student List</h1>
-            <ul>{
-                (campus.students) && campus.students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.name}</Link></li>)
-            }
-            </ul>
-            <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
-            <button className="btn btn-outline-danger" onClick={props.handleDelete}>Delete Campus</button>
-            <p>
-                <Link to="/campuses"><button>Back to Campuses</button></Link>
-            </p>
+        <div className="jumbotron jumbotron-fluid">
+            <div className="container">
+                <h1>{campus.name}</h1>
+                <img src={campus.imageUrl} />
+                <h4>Campus Id: {campus.id} </h4>
+                <p>{campus.description} </p>
+
+                <h1>Student List</h1>
+                <ul>{
+                    (campus.students) && campus.students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.name}</Link></li>)
+                }
+                </ul>
+                <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
+                <p><button className="btn btn-outline-danger" onClick={props.handleDelete}>Delete Campus</button></p>
+                <p>
+                    <Link to="/campuses"><button>Back to Campuses</button></Link>
+                </p>
+            </div>
         </div>
     )
 }

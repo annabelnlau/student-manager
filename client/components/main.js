@@ -14,16 +14,16 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>GALACTA ACADEMIES</h1>
-      <nav>
+          <h1><b>GALACTA ACADEMIES</b></h1>
+      <nav className="navbar-header">
         {
           isLoggedIn
             ? <div>
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
-              <a href="#" onClick={handleClick}>Logout</a>
               <Link to="/campuses">Our Campuses</Link>
               <Link to="/students">All Students</Link>
+              <a href="#" onClick={handleClick}>Logout</a>
             </div>
             : <div>
               {/* The navbar will show these links before you log in */}
