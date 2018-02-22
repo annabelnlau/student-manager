@@ -23,7 +23,9 @@ router.get('/:studentId', (req, res, next) => {
 })
 
 router.put('/:studentId', (req, res, next) => {
-    Student.findById(req.params.studentId)
+    Student.findById(req.params.studentId, {
+        include: [{model: Campus}]
+    })
         .then(foundStudent => foundStudent.update(req.body))
         .then(updatedStudent => res.json(updatedStudent))
         .catch(next)
