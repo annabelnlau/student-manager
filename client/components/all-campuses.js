@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { addNewCampusThunk, fetchAllCampuses } from '../store'
 
 class AllCampuses extends Component {
@@ -81,4 +81,4 @@ const mapDispatchToProps = function(dispatch){
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllCampuses)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllCampuses))

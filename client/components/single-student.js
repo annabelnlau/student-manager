@@ -10,18 +10,22 @@ class SingleStudent extends Component {
     render() {
         const student = this.props.singleStudent
         if (!student) return <div />
-
+        const studentsCampus = this.props.allCampuses.find(campus => campus.id === this.props.singleStudent.campusId)
+        if (!studentsCampus) return <div />
+        console.log(studentsCampus.name, "STUDENTS CAMPUS")
+        
         return (
             <div>
                 <h4>Name: {student.name} </h4>
                 <h4>Student Id: {student.id} </h4>
                 <h4>Email: {student.email} </h4>
                 <h4>GPA: {student.gpa}</h4>
-                <h4>Campus: {student.campus.name}</h4>
+                <h4>Campus ID: {student.campusId}</h4>
+                <h4>Campus Name: {studentsCampus.name}</h4>
                 <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
                 <button onClick={this.props.handleDelete}>Delete Student</button>
                 <p>
-                    <Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>
+                    {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
                     <Link to="/students"><button>Back to Students</button></Link>
                     <Link to="/campuses"><button>Back to Campuses</button></Link>
                 </p>
@@ -35,7 +39,7 @@ const mapStateToProps = ({ allStudents, allCampuses }, ownProps) => ({
     singleStudent: allStudents.find(
         student => +student.id === +ownProps.match.params.id
     ),
-    allCampuses
+    allCampuses: allCampuses
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { editStudentThunk } from '../store'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 
 function EditStudent(props) {
@@ -99,4 +99,4 @@ const mapDispatchToProps = function (dispatch, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditStudent)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditStudent))
