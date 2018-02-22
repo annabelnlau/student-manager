@@ -12,8 +12,7 @@ class SingleStudent extends Component {
         if (!student) return <div />
         const studentsCampus = this.props.allCampuses.find(campus => campus.id === this.props.singleStudent.campusId)
         if (!studentsCampus) return <div />
-        console.log(studentsCampus.name, "STUDENTS CAMPUS")
-        
+
         return (
             <div>
                 <h4>Name: {student.name} </h4>
@@ -23,7 +22,7 @@ class SingleStudent extends Component {
                 <h4>Campus ID: {student.campusId}</h4>
                 <h4>Campus Name: {studentsCampus.name}</h4>
                 <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
-                <button onClick={this.props.handleDelete}>Delete Student</button>
+                <button className="btn btn-outline-danger" onClick={this.props.handleDelete}>Delete Student</button>
                 <p>
                     {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
                     <Link to="/students"><button>Back to Students</button></Link>

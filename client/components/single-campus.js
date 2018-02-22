@@ -14,12 +14,12 @@ function SingleCampus(props) {
             <h4>Campus Id: {campus.id} </h4>
             <p>{campus.description} </p>
             <h1>Student List</h1>
-                <ul>{
-                    (campus.students) && campus.students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.name}</Link></li>)
-                }
-                </ul>
+            <ul>{
+                (campus.students) && campus.students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.name}</Link></li>)
+            }
+            </ul>
             <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
-            <button onClick={props.handleDelete}>Delete Campus</button>
+            <button className="btn btn-outline-danger" onClick={props.handleDelete}>Delete Campus</button>
             <p>
                 <Link to="/campuses"><button>Back to Campuses</button></Link>
             </p>
@@ -38,7 +38,7 @@ const mapDispatchToProps = function (dispatch, ownProps) {
         handleDelete(evt) {
             evt.preventDefault()
             let confirmDelete = confirm('Are you sure you want to delete this campus?')
-            if (confirmDelete){
+            if (confirmDelete) {
                 const campusId = +ownProps.match.params.id
                 dispatch(deleteCampusThunk(campusId))
             } else {
