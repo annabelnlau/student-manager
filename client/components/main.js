@@ -14,7 +14,7 @@ const Main = (props) => {
 
   return (
     <div>
-          <h1><b>GALACTA ACADEMIES</b></h1>
+          <Link to="/home"><h1><b>GALACTA ACADEMIES</b></h1></Link>
       <nav className="navbar-header">
         {
           isLoggedIn
