@@ -23,12 +23,12 @@ class SingleStudent extends Component {
                     <h4>Campus ID: {student.campusId}</h4>
                     <h4>Campus Name: {studentsCampus.name}</h4>
                     <Link to={`/students/${student.id}/edit`}><button>Edit Student</button></Link>
-                    <br />
-                        <button className="btn btn-outline-danger" onClick={this.props.handleDelete}>Delete Student</button>
-                        {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
-                        <p> <Link to="/students"><button>Back to Students</button></Link>
-                            <Link to="/campuses"><button>Back to Campuses</button></Link>
+                    <p />
+                    <p> <Link to="/students"><button>Back to Students</button></Link>
+                    <Link to="/campuses"><button>Back to Campuses</button></Link>
                     </p>
+                    <button className="btn btn-outline-danger" onClick={this.props.handleDelete}>Delete Student</button>
+                        {/*<Link to={`/campuses/${student.campusId}`}><button>Back to {student.campus.name}</button></Link>*/}
                 </div>
             </div>
         )

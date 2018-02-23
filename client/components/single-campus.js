@@ -21,10 +21,10 @@ function SingleCampus(props) {
                 }
                 </ul>
                 <Link to={`/campuses/${campus.id}/edit`}><button>Edit Campus</button></Link>
-                <p><button className="btn btn-outline-danger" onClick={props.handleDelete}>Delete Campus</button></p>
-                <p>
-                    <Link to="/campuses"><button>Back to Campuses</button></Link>
-                </p>
+                <p />
+                <Link to="/campuses"><button>Back to Campuses</button></Link>
+                <p /><button className="btn btn-outline-danger" onClick={props.handleDelete}>Delete Campus</button>
+
             </div>
         </div>
     )
