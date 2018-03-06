@@ -34,14 +34,14 @@ class Routes extends Component {
         <Main>
           <Switch>
             {/* Routes placed here are available to all visitors */}
-            <Route path="/home" component={Homepage} />
+            <Route exact path="/" component={Homepage} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             {
               isLoggedIn &&
               <Switch>
               {/* Routes placed here are only available after logging in */}
-              <Route path="/home" component={Homepage} />
+              <Route exact path="/" component={Homepage} />
               <Route exact path="/campuses" component={AllCampuses} />
               <Route path="/campuses/:id/edit" component={EditCampus} />
               <Route path="/campuses/:id" component={SingleCampus} />
