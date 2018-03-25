@@ -14,13 +14,13 @@ const Main = (props) => {
 
   return (
     <div>
-          <Link to="/home"><h1><b>GALACTA ACADEMIES</b></h1></Link>
+          <Link to="/"><h1><b>GALACTA ACADEMIES</b></h1></Link>
       <nav className="navbar-header">
         {
           isLoggedIn
             ? <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
               <Link to="/campuses">Our Campuses</Link>
               <Link to="/students">All Students</Link>
               <a href="#" onClick={handleClick}>Logout</a>
